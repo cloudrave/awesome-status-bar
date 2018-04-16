@@ -1,14 +1,10 @@
 #include "config.h"
 
 int main(void) {
-    // Set the status every second.
-    while(1) {
-        setStatus();
-        sleep(1);
-    }
+    printStatus();
 }
 
-int setStatus(void) {
+int printStatus(void) {
     char status[MAXSTR + 1];
     status[0] = '\0';
     for (int i = 0; i < sizeof(countdowns) / sizeof(Countdown); i++) {
@@ -21,13 +17,14 @@ int setStatus(void) {
     snprintf(
         remainingStatus,
         MAXSTR - strlen(status),
-        "%s -- %s; [Mem: %s]   [Bat: %2.0f %s]   [Temp: %s]",
-        date(), dayPercent(), ram(),
+        "[Mem: %s]   [Bat: %2.0f %s]   [Temp: %s]    %s -- %s",
+        ram(),
         batteryPercent() * 100, batteryStatus(),
-        getTemperature(TEMPERATURE_DIR, TEMPERATURE_INPUT)
+        getTemperature(TEMPERATURE_DIR, TEMPERATURE_INPUT),
+        date(), dayPercent()
     );
     strcat(status, remainingStatus);
-    XSetRoot(status);
+    printf("%s", status);
 }
 
 /*

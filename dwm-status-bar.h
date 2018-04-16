@@ -38,7 +38,7 @@ static const char * batteryStatus(void);
 static int getIntFromFile(char *fileName);
 static char * getStrFromFile(char *fileName, int maxLength);
 static void XSetRoot(const char *name);
-static int setStatus(void);
+static int printStatus(void);
 char * getTemperature(char *base, char *sensor);
 char * readfile(char *base, char *file);
 char * smprintf(char *fmt, ...);
