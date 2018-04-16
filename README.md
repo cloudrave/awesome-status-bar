@@ -1,4 +1,4 @@
-# DWM Status Bar
+# Awesome Status Bar
 
 ## Running
 
