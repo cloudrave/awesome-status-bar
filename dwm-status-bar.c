@@ -96,11 +96,16 @@ static const char * getCountdown(Countdown c) {
     totalSeconds -= minutes * SECONDS_PER_MINUTE;
     seconds = totalSeconds;
 
-    snprintf(
+    if (weeks > 0) {
+        sprintf(ret, "%dw ", weeks);
+    }
+    if (days > 0) {
+        sprintf(ret, "%s%dd ", ret, days);
+    }
+    sprintf(
         ret,
-        MAXSTR,
-        "%dw %dd %.2d:%.2d",
-        weeks, days, hours, minutes
+        "%s%.2d:%.2d",
+        ret, hours, minutes
     );
     return ret;
 }
